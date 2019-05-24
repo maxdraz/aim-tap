@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class ArcadeMode : GameMode
 {
     public static ArcadeMode instance;
@@ -10,6 +11,21 @@ public class ArcadeMode : GameMode
     bool gameStarted;
     public BoardManager bm;
     public float countdownTime = 3f;
+
+    public enum GameState
+    {
+        Start,
+        meditation
+    }
+
+    public GameState gameState;
+
+    [Space(20f)]
+
+    public float targetsToStart = 20f;
+    //DELEGATES
+    public delegate void StartMeditation();
+    public static event StartMeditation startMeditationEvent;
 
     private void Awake()
     {
@@ -30,7 +46,12 @@ public class ArcadeMode : GameMode
 
     private void Update()
     {
-
+        // Start meditation 
+        if(this.targetsHit >= targetsToStart && gameState == GameState.Start)
+        {
+            startMeditationEvent();
+            gameState = GameState.meditation;
+        }
     }
 
     public void StartGame()

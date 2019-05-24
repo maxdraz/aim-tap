@@ -146,7 +146,7 @@ MonoBehaviour:
   bulletHolePrefab: {fileID: 174731169513829996, guid: 32474b9931aed7341ba0d66ba3e4ce6c,
     type: 3}
   cursorVisible: 1
-  followMouse: 1
+  followMouse: 0
 --- !u!212 &64607568
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -203,7 +203,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 64607566}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.45, y: 0, z: -1.21}
+  m_LocalPosition: {x: -6.91, y: 0, z: -1.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -416,7 +416,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 287128827}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -881,6 +881,7 @@ GameObject:
   - component: {fileID: 695428051}
   - component: {fileID: 695428054}
   - component: {fileID: 695428053}
+  - component: {fileID: 695428055}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -965,7 +966,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPrefab: {fileID: 7679144240873875232, guid: be5a1de587cbe1142aa707f921ad7146,
     type: 3}
-  timeInBetweenTargets: 0.5
+  timeInBetweenTargets: 1
   timeIncrement: 0
 --- !u!61 &695428054
 BoxCollider2D:
@@ -993,6 +994,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 8.514312, y: 8.040592}
   m_EdgeRadius: 0
+--- !u!95 &695428055
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695428050}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dffb149f0c275e444994e9bb9f2008d9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &710059514
 GameObject:
   m_ObjectHideFlags: 0
@@ -1177,7 +1197,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1000479177
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1431,6 +1451,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1451323538}
   - component: {fileID: 1451323537}
+  - component: {fileID: 1451323539}
   m_Layer: 0
   m_Name: blurry bg
   m_TagString: Untagged
@@ -1500,6 +1521,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1451323539
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451323536}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: af86fc9415c333248ba075774efadd8b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1475744566
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1900,6 +1940,8 @@ MonoBehaviour:
   targetsHitText: {fileID: 1732371738}
   bm: {fileID: 0}
   countdownTime: 3
+  gameState: 0
+  targetsToStart: 20
 --- !u!4 &2081101920
 Transform:
   m_ObjectHideFlags: 0

@@ -8,14 +8,25 @@ public class BoardManager : MonoBehaviour
     BoxCollider2D spawnArea;
     public float timeInBetweenTargets;
     public float timeIncrement;
+    Animator anim;
    
 
     private void Start()
     {
         spawnArea = GetComponent<BoxCollider2D>();
+        anim = GetComponent<Animator>();
         
     }
-   
+
+    private void OnEnable()
+    {
+        ArcadeMode.startMeditationEvent += OnStartMeditation;
+    }
+
+    private void OnDisable()
+    {
+        ArcadeMode.startMeditationEvent -= OnStartMeditation;
+    }
 
     IEnumerator SpawnTargets()
     {
@@ -40,4 +51,13 @@ public class BoardManager : MonoBehaviour
     {
         StartCoroutine(SpawnTargets());
     }
+
+    #region EVENTS
+
+    void OnStartMeditation()
+    {
+        anim.SetBool("fade", true);
+    }
+
+    #endregion
 }
