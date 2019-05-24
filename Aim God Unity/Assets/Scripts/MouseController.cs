@@ -8,6 +8,8 @@ public class MouseController : MonoBehaviour
     public bool cursorVisible;
     public bool followMouse;
 
+    public List<int> soundIndexes;
+
     private void Awake()
     {
        
@@ -32,7 +34,7 @@ public class MouseController : MonoBehaviour
             GameObject bulletHoleGO = ObjectPooler.SharedInstance.GetPooledObject("Bullet Hole");
             bulletHoleGO.transform.position = mousePos;
             bulletHoleGO.SetActive(true);
-            AudioManager.SharedInstance.PlayClip(0, "Gun Shot", false);
+           // AudioManager.SharedInstance.PlayClip(0, "Gun Shot", false);
         }
     }
 }

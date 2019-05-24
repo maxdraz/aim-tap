@@ -26,6 +26,7 @@ public class ArcadeMode : GameMode
     //DELEGATES
     public delegate void StartMeditation();
     public static event StartMeditation startMeditationEvent;
+    
 
     private void Awake()
     {
@@ -42,6 +43,16 @@ public class ArcadeMode : GameMode
         {
             bm = GameObject.FindObjectOfType<BoardManager>();
         }
+    }
+
+    private void OnEnable()
+    {
+        startMeditationEvent += DelayMusic;
+    }
+
+    private void OnDisable()
+    {
+        startMeditationEvent -= DelayMusic;
     }
 
     private void Update()
@@ -79,5 +90,16 @@ public class ArcadeMode : GameMode
         }
         print("starting to spawn targets");
         bm.StartSpawningTargets();
+    }
+
+    //MUUUUUUSIC
+    void DelayMusic()
+    {
+        Invoke("PlayMusic", 14f);
+    }
+    
+    void PlayMusic()
+    {
+        AudioManager.SharedInstance.PlayClip(2, "Music", false);
     }
 }

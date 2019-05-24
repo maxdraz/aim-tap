@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/ArcadeMode.unity
+    guid: 08160ad83392c564abfa50ab11434546
   m_configObjects: {}

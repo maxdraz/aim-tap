@@ -9,12 +9,16 @@ public class BoardManager : MonoBehaviour
     public float timeInBetweenTargets;
     public float timeIncrement;
     Animator anim;
+
+    public string prefabName;
    
 
     private void Start()
     {
         spawnArea = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
+
+        
         
     }
 
@@ -45,18 +49,40 @@ public class BoardManager : MonoBehaviour
         GameObject targetObj = ObjectPooler.SharedInstance.GetPooledObject("Target");
         targetObj.transform.position = new Vector3(ranX, ranY,transform.position.z -1);
         targetObj.SetActive(true);
-    }    
+    }
+
+    void SpawnNewZenTarget()
+    {
+        float ranX = Random.Range(spawnArea.bounds.min.x, spawnArea.bounds.max.x);
+        float ranY = Random.Range(spawnArea.bounds.min.y, spawnArea.bounds.max.y);
+
+        GameObject targetObj = ObjectPooler.SharedInstance.GetPooledObject("Zen Target");
+        targetObj.transform.position = new Vector3(ranX, ranY, transform.position.z - 1);
+        targetObj.SetActive(true);
+    }
 
     public void StartSpawningTargets()
     {
         StartCoroutine(SpawnTargets());
     }
 
+    IEnumerator SpawnZenTargets()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(timeInBetweenTargets);
+            SpawnNewZenTarget();
+        }
+    }
+
+
     #region EVENTS
 
     void OnStartMeditation()
     {
-        anim.SetBool("fade", true);
+        anim.SetBool("fade", true);       
+
+        
     }
 
     #endregion
